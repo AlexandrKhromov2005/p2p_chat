@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build with Boost",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-I", "C:/boost_1_87_0/boost_1_87_0", // Упростили путь к заголовкам
+                "-L", "C:/boost_1_87_0/boost_1_87_0/stage/lib",
+                "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-lboost_system",      // Библиотеки Boost ДО системных
+                "-lws2_32",
+                "-lwsock32",
+                "-DBOOST_ALL_NO_LIB"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "build"
+        }
+    ]
+}
